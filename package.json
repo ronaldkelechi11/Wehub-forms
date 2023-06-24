@@ -7,7 +7,7 @@
     "test": "nodemon index"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ronald Kelechi(On behalf of Wehub)",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
