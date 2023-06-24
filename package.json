@@ -1,7 +1,7 @@
 {
   "name": "wehub-forms",
   "version": "1.0.0",
-  "description": "",
+  "description": "Easy form submit solution for Web Developer without much Backend Skills and is very easy to use",
   "main": "index.js",
   "scripts": {
     "test": "nodemon index"
