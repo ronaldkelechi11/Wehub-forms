@@ -26,23 +26,24 @@ app.post("/:userToSendEmailTo", async (req, res) => {
     var body = req.body
     var objsKeys = Object.keys(body)
     var objsValues = Object.values(body)
+    var emptyArray = []
 
     for (let index = 0; index < objsKeys.length; index++) {
-        const element = objsKeys[index];
         var html = `${objsKeys[index]}: ${objsValues[index]}`
-        console.log(html);
+        emptyArray.push(html)
     }
+    var htmlFullCode = ` ${emptyArray} `
 
-    // const user = req.params.userToSendEmailTo
+    const user = req.params.userToSendEmailTo
 
-    // const mailer = await transporter.sendMail({
-    //     from: serviceEmail,
-    //     to: user,
-    //     subject: "New Mail from We-Hub Forms",
-    //     text: body
-    // })
-    //     .then(() => { res.status(200).send('Succesful'), console.log("Message Sent Succesfully") })//Mail sent succesfulyy
-    //     .catch(err => { console.log(err), res.status(401).send('Error'), console.log("Error sending mail") })
+    const mailer = await transporter.sendMail({
+        from: serviceEmail,
+        to: user,
+        subject: "New Mail from We-Hub Forms",
+        text: htmlFullCode
+    })
+        .then(() => { res.status(200).send('Succesful'), console.log("Message Sent Succesfully") })//Mail sent succesfulyy
+        .catch(err => { console.log(err), res.status(401).send('Error'), console.log("Error sending mail") })
 })
 
 
