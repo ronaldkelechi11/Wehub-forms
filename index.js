@@ -18,8 +18,12 @@ const transporter = nodemailer.createTransport({
         pass: servicePassword
     },
 })
+app.get("/", (req, res) => {
+    res.send("Homepage")
+})
 
 app.post("/:userToSendEmailTo", async (req, res) => {
+    const user = req.params.userToSendEmailTo
     var siteAddress = await req.headers.referer
     var redirectLink = req.body.redirectlink
 
@@ -33,8 +37,7 @@ app.post("/:userToSendEmailTo", async (req, res) => {
         emptyArray.push(html)
     }
     var htmlFullCode = ` ${emptyArray} `
-
-    const user = req.params.userToSendEmailTo
+    console.log(emptyArray);
 
     const mailer = await transporter.sendMail({
         from: serviceEmail,
