@@ -22,8 +22,8 @@ app.get("/", (req, res) => {
     res.send("Homepage")
 })
 
-app.post("/", async (req, res) => {
-    const user = req.body.emailTo
+app.post("/:emailTo", async (req, res) => {
+    const user = req.params.emailTo
     var siteAddress = await req.headers.referer
     var redirectLink = req.body.redirectlink
 
@@ -33,17 +33,16 @@ app.post("/", async (req, res) => {
     var emptyArray = []
 
     for (let index = 0; index < objsKeys.length; index++) {
-        var html = `${objsKeys[index]}: ${objsValues[index]}`
+        var html = `<h4>${objsKeys[index]}: ${objsValues[index]}</h4> <br>`
         emptyArray.push(html)
     }
-    var htmlFullCode = ` ${emptyArray} `
-    console.log(emptyArray);
+    var htmlFullCode = `${emptyArray}`
 
     const mailer = await transporter.sendMail({
         from: serviceEmail,
         to: user,
         subject: "New Mail from We-Hub Forms",
-        text: htmlFullCode
+        html: htmlFullCode
     })
         .then(() => { res.status(200).send('Succesful'), console.log("Message Sent Succesfully") })//Mail sent succesfulyy
         .catch(err => { console.log(err), res.status(401).send('Error'), console.log("Error sending mail") })

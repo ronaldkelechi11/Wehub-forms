@@ -18,7 +18,7 @@ Currently supports `<input type="?"><input>`
 - password
 
 # Easy Implementation 
-With less than 3 lines of code bring your Form to life and increase your productivity
+With less than 2 lines of code bring your Form to life and increase your productivity
 
 - In your form add a hidden input element with the name 'redirectlink' showing your webpage where to redirect to after the email is sent.(Optional)
 
@@ -31,6 +31,7 @@ With less than 3 lines of code bring your Form to life and increase your product
 |response|message|statuscode|
 |---|---|---|
 |good|succesful|200|
+|bad|error|401
 
 
 ## New Features coming soon
