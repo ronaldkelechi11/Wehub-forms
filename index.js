@@ -22,8 +22,8 @@ app.get("/", (req, res) => {
     res.send("Homepage")
 })
 
-app.post("/:userToSendEmailTo", async (req, res) => {
-    const user = req.params.userToSendEmailTo
+app.post("/", async (req, res) => {
+    const user = req.body.emailTo
     var siteAddress = await req.headers.referer
     var redirectLink = req.body.redirectlink
 
