@@ -27,6 +27,10 @@ app.post("/:emailTo", async (req, res) => {
     var siteAddress = await req.headers.referer
     var redirectLink = req.body.redirectlink
 
+    if (redirectLink == undefined || redirectLink == null) {
+        redirectLink = siteAddress
+    }
+
     var body = req.body
     var objsKeys = Object.keys(body)
     var objsValues = Object.values(body)
@@ -44,7 +48,7 @@ app.post("/:emailTo", async (req, res) => {
         subject: "New Mail from We-Hub Forms",
         html: htmlFullCode
     })
-        .then(() => { res.status(200).send('Succesful'), console.log("Message Sent Succesfully") })//Mail sent succesfulyy
+        .then(() => { res.status(200).location(redirectLink), console.log("Message Sent Succesfully") })//Mail sent succesfulyy
         .catch(err => { console.log(err), res.status(401).send('Error'), console.log("Error sending mail") })
 })
 
