@@ -1,5 +1,5 @@
 # Wehub-forms
-CDN: ` http://wehub-forms.onrender.com/EmailToSendTo `
+CDN: ` http://wehub-forms.onrender.com/EmailToSendTo`
 > Replace EmailToSendTo to the email of who ever you want the form data to be sending to
  
 # Easy form submit solution for Web Developer without much Backend Skills and is very easy to use

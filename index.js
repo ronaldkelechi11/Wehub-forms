@@ -32,6 +32,7 @@ app.post("/:emailTo", async (req, res) => {
     }
 
     var body = req.body
+    console.log(body);
     var objsKeys = Object.keys(body)
     var objsValues = Object.values(body)
     var emptyArray = []
@@ -41,8 +42,9 @@ app.post("/:emailTo", async (req, res) => {
         emptyArray.push(html)
     }
     var htmlFullCode = `${emptyArray}`
+    console.log(htmlFullCode);
 
-    const mailer = await transporter.sendMail({
+    const mailer = transporter.sendMail({
         from: serviceEmail,
         to: user,
         subject: "New Mail from We-Hub Forms",
@@ -51,10 +53,6 @@ app.post("/:emailTo", async (req, res) => {
         .then(() => { res.status(200).location(redirectLink), console.log("Message Sent Succesfully") })//Mail sent succesfulyy
         .catch(err => { console.log(err), res.status(401).send('Error'), console.log("Error sending mail") })
 })
-
-
-
-
 
 app.listen(PORT, () => {
     console.log("Server is online on " + PORT);
